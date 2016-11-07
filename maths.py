@@ -12,7 +12,8 @@
 #
 #   powerset
 #
-#   Returns a list of all possible subsets of the set 
+#   Returns a list of all possible subsets of the original set
+#   Includes the empty set and the original set itself
 #
 def powerset(orig_set):
     powerset = [[]]
@@ -65,9 +66,10 @@ def ordered_choose(listElements, cardinality, listChosen=None, chosen=None):
 #
 #   unordered_choose
 #
-#   Returns a list containing all possible ways to choose 
-#   (cardinality) elements from (listElements) without
-#   concern for the order in which they are choosen
+#   Returns a list containing possible ways to choose elements from ListElements
+#   Order is not taken into account
+#   
+#   cardinality = N : N elements are chosen
 #
 def unordered_choose(listElements, cardinality, listChosen=None, chosen=None):
     if listChosen is None:
@@ -91,11 +93,12 @@ def unordered_choose(listElements, cardinality, listChosen=None, chosen=None):
 
 #   combine
 # 
-#   Returns a list of combinations from the elements in ListElements   
+#   Returns a list of combinations from the elements in ListElements
+#   Elements may be chosen several times
 #
-#   Ordered = True  : Returns an ordered list
-#   Ordered = False : Returns an unordered list
-#   Cardinality = N : Sets the size of a combination to N 
+#   ordered = True  : Returns an ordered list
+#   ordered = False : Returns an unordered list
+#   cardinality = N : Sets the size of a combination to N 
 #
 def combine(listElements, cardinality, ordered=True, listCombinations=None, 
             combination=None, firstElement=0):
