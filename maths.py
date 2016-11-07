@@ -2,7 +2,7 @@
 #
 #   maths.py
 #
-#
+#   
 #
 
 
@@ -91,7 +91,7 @@ def unordered_choose(listElements, cardinality, listChosen=None, chosen=None):
 
 #   combine
 # 
-#   Creates a list of combinations from the elements in ListElements   
+#   Returns a list of combinations from the elements in ListElements   
 #
 #   Ordered = True  : Returns an ordered list
 #   Ordered = False : Returns an unordered list
