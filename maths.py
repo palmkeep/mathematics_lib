@@ -188,10 +188,24 @@ def factorial(a):
 #   Returns: The greatest common divisor of a and b
 #
 def gcd(a, b):
-    aFactors = factorize(a)
-    bFactors = factorize(b)
+    a_factors = a
+    b_factors = b
+    if isinstance(a, int) or isinstance(a, float):
+        a_factors = factorize(a)
+    if isinstance(b, int) or isinstance(b, float):
+        b_factors = factorize(b)
 
-    return aFactors, bFactors
+    try:
+        a_factor = a_factors[0]
+        b_factor = b_factors[0]
+    except:
+        return []
+    if a_factor == b_factor:
+        return [ a_factor ] + gcd(a_factors[1:], b_factors[1:])
+    elif a_factor < b_factor:
+        return gcd(a_factors[1:], b_factors)
+    elif a_factor > b_factor:
+        return gcd(a_factors, b_factors[1:])
 
 
 
@@ -228,3 +242,33 @@ def primesbelow(n):
 
 def crypt():
     print('FINISH THIS')
+
+
+
+
+def fancy_print(major_list):
+    col_lengths = []
+    rows = len(major_list)
+    columns = len(major_list[0])
+
+    
+    for col in range(columns):
+        col_length = 0
+        for row in range(rows):
+            major_list[row][col] = str(major_list[row][col])
+            col_length = max(col_length, len(major_list[row][col]) )
+        col_lengths.append(col_length)
+
+    for row in range(rows):
+        line = ""
+        for col in range(columns):
+            col_elem = major_list[row][col]
+            col_elem_len = len(col_elem)
+
+            i = 0
+            while col_lengths[col] > col_elem_len + i:
+                line += " "
+                i += 1
+            line += col_elem
+            line += " "
+        print(line)
