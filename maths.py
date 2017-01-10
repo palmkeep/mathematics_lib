@@ -194,16 +194,18 @@ def gcd(a, b):
         aFactors = factorize(a)
     if isinstance(b, int) or isinstance(b, float):
         bFactors = factorize(b)
-    
-    if len(aFactors) == 0 or len(bFactors) == 0:
-        return []
-    elif aFactors[0] == bFactors[0]:
-        return [aFactors[0]] + gcd(aFactors[1:], bFactors[1:])
-    elif aFactors[0] < bFactors[0]:
-        return gcd(aFactors[1:], bFactors)
-    elif aFactors[0] > bFactors[0]:
-        return gcd(aFactors, bFactors[1:])
 
+    try:
+        a_factor = a_factors[0]
+        b_factor = b_factors[0]
+    except:
+        return []
+    if a_factor == b_factor:
+        return [ a_factor ] + gcd(a_factors[1:], b_factors[1:])
+    elif a_factor < b_factor:
+        return gcd(a_factors[1:], b_factors)
+    elif a_factor > b_factor:
+        return gcd(a_factors, b_factors[1:])
 
 
 
@@ -260,17 +262,29 @@ def crypt():
 
 
 
+<<<<<<< HEAD
 # Not finished
+=======
+
+>>>>>>> 8f4696ee4244209df6ded74e23617177d6cfb5cd
 def fancy_print(major_list):
     col_lengths = []
     rows = len(major_list)
     columns = len(major_list[0])
 
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 8f4696ee4244209df6ded74e23617177d6cfb5cd
     for col in range(columns):
         col_length = 0
         for row in range(rows):
             major_list[row][col] = str(major_list[row][col])
+<<<<<<< HEAD
             col_length = max( col_length, len(major_list[row][col]) )
+=======
+            col_length = max(col_length, len(major_list[row][col]) )
+>>>>>>> 8f4696ee4244209df6ded74e23617177d6cfb5cd
         col_lengths.append(col_length)
 
     for row in range(rows):
@@ -283,6 +297,7 @@ def fancy_print(major_list):
             while col_lengths[col] > col_elem_len + i:
                 line += " "
                 i += 1
+<<<<<<< HEAD
             line += col_elem + " "
         print(line)
 
@@ -295,3 +310,8 @@ def fancy_print(major_list):
 
 
 
+=======
+            line += col_elem
+            line += " "
+        print(line)
+>>>>>>> 8f4696ee4244209df6ded74e23617177d6cfb5cd
