@@ -188,10 +188,22 @@ def factorial(a):
 #   Returns: The greatest common divisor of a and b
 #
 def gcd(a, b):
-    aFactors = factorize(a)
-    bFactors = factorize(b)
+    aFactors = a
+    bFactors = b
+    if isinstance(aFactors, int) or isinstance(aFactors, float):
+        aFactors = factorize(a)
+    if isinstance(b, int) or isinstance(b, float):
+        bFactors = factorize(b)
+    
+    if len(aFactors) == 0 or len(bFactors) == 0:
+        return []
+    elif aFactors[0] == bFactors[0]:
+        return [aFactors[0]] + gcd(aFactors[1:], bFactors[1:])
+    elif aFactors[0] < bFactors[0]:
+        return gcd(aFactors[1:], bFactors)
+    elif aFactors[0] > bFactors[0]:
+        return gcd(aFactors, bFactors[1:])
 
-    return aFactors, bFactors
 
 
 
@@ -226,5 +238,60 @@ def primesbelow(n):
 
 
 
+#
+#   quadratic_eq
+#
+#
+#
+def quadratic_eq(a, b, c, y):
+    y = y / a
+    c = c / a
+    b = b / a
+    a = 1
+
+    if y - c + ((b/2)**2) < 0:
+        raise IOError("Function does not handle imaginary roots yet")
+    return -(b/2)+((y-c+((b/2)**2))**(1/2)), -(b/2)-((y-c+((b/2)**2))**(1/2))
+
+
+
 def crypt():
     print('FINISH THIS')
+
+
+
+# Not finished
+def fancy_print(major_list):
+    col_lengths = []
+    rows = len(major_list)
+    columns = len(major_list[0])
+
+    for col in range(columns):
+        col_length = 0
+        for row in range(rows):
+            major_list[row][col] = str(major_list[row][col])
+            col_length = max( col_length, len(major_list[row][col]) )
+        col_lengths.append(col_length)
+
+    for row in range(rows):
+        line = ""
+        for col in range(columns):
+            col_elem = major_list[row][col]
+            col_elem_len = len(col_elem)
+
+            i = 0
+            while col_lengths[col] > col_elem_len + i:
+                line += " "
+                i += 1
+            line += col_elem + " "
+        print(line)
+
+
+
+
+
+
+
+
+
+
