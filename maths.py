@@ -272,19 +272,11 @@ def fancy_print(major_list):
     rows = len(major_list)
     columns = len(major_list[0])
 
-<<<<<<< HEAD
-=======
-    
->>>>>>> 8f4696ee4244209df6ded74e23617177d6cfb5cd
     for col in range(columns):
         col_length = 0
         for row in range(rows):
             major_list[row][col] = str(major_list[row][col])
-<<<<<<< HEAD
-            col_length = max( col_length, len(major_list[row][col]) )
-=======
-            col_length = max(col_length, len(major_list[row][col]) )
->>>>>>> 8f4696ee4244209df6ded74e23617177d6cfb5cd
+            col_length = max(col_length, len(major_list[row][col]))
         col_lengths.append(col_length)
 
     for row in range(rows):
@@ -297,21 +289,5 @@ def fancy_print(major_list):
             while col_lengths[col] > col_elem_len + i:
                 line += " "
                 i += 1
-<<<<<<< HEAD
             line += col_elem + " "
         print(line)
-
-
-
-
-
-
-
-
-
-
-=======
-            line += col_elem
-            line += " "
-        print(line)
->>>>>>> 8f4696ee4244209df6ded74e23617177d6cfb5cd
